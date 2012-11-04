@@ -49,12 +49,15 @@ module TjRailsExtension
       def resource! options = {}
         options[:save_options] ||= {}
         options[:find_options] ||= {}
+        options[:index] ||= {}
+
         record_class = controller_name.classify.constantize
         singular_string = controller_name.singularize
         plural_string = controller_name
+        options[:index][:records] ||= record_class.all
         case action_name
         when "index"
-          instance_variable_set('@' + plural_string, record_class.all)
+          instance_variable_set('@' + plural_string, options[:index][:records])
           set_header
         when "show"
           find!(options[:find_options])
