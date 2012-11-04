@@ -1,0 +1,6 @@
+<%= error_message @post %>
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
