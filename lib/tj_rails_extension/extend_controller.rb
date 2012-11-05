@@ -10,7 +10,10 @@ module TjRailsExtension
       when "index" then record_class.model_name.human
       when "show" then
         record = instance_variable_get("@#{controller_name.singularize}")
-        record.respond_to?(:name) ? record.name : record.id
+        if record.respond_to?(:name) then record.name
+        elsif record.respond_to?(:title) then record.title
+        else record.id
+        end
       when "new" then t("helpers.submit.create", :model => record_class.model_name.human)
       when "edit" then t("helpers.submit.update", :model => record_class.model_name.human)
       end
