@@ -26,7 +26,9 @@ if yes?("Install gems?")
   ## Dev
   gem_group :development do
     gem "faker"
+    gem "rubyzip"
   end
+  rake "gems:install"
 end
 
 if yes?("Install Twitter Boostrap to 'vendor/assets/' ?")
