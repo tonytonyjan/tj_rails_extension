@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
-  before_filter{|c|
-    c.resource!(index: {records: Post.limit(2)})
-  }
+  before_filter :resource!
   def create
   end
   def update
