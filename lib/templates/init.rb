@@ -6,18 +6,21 @@ end
 
 if yes?("Install gems?")
   ## Access
-  gem "devise"
-  generate("devise:install")
-  model_name = ask("What would you like the user model to be called? [user]")
-  model_name = "user" if model_name.blank?
-  generate("devise", model_name)
-  gem "cancan"
+  if yes?("Install member system? (devise, cancan)")
+    gem "devise"
+    generate("devise:install")
+    model_name = ask("What would you like the user model to be called? [user]")
+    model_name = "user" if model_name.blank?
+    generate("devise", model_name)
+    gem "cancan"
+  end
   ## Storage
   gem "carrierwave"
   ## View
   gem "simple_form"
   generate("simple_form:install", "--bootstrap")
   gem "dynamic_form"
+  gem "cocoon"
   gem "will_paginate"
   ## Markup
   gem "rdiscount"
