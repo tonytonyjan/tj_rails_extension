@@ -1,0 +1,24 @@
+<%= will_paginate @projects %>
+<table>
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @projects) do |project| %>
+        <td><%= project.name %></td>
+        <td><%= link_to t('tj.form.show'), project %></td>
+      <td><%= link_to t('tj.form.edit'), edit_project_path(project) %></td>
+      <td><%= link_to t('tj.form.destroy'), project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @projects %>
+<br />
+
+<%= link_to t("helpers.submit.create", :model => Project), new_project_path %>

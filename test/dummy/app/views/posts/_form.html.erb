@@ -1,6 +1,12 @@
-<%= error_message @post %>
-<%= simple_form_for @post do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.submit %>
+<%= simple_form_for(@post) do |f| %>
+  <%= error_message f.object %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn" %>
+  </div>
 <% end %>

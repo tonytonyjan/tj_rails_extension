@@ -1,5 +1,11 @@
 Dummy::Application.routes.draw do
+  get "home/about"
+
+  get "home/contact"
+
   resources :posts
+
+  resources :projects
 
   get "home/index"
 

@@ -1,9 +1,3 @@
 class PostsController < ApplicationController
-  before_filter :resource!
-  def create
-  end
-  def update
-  end
-  def destroy
-  end
+  default_resource_actions index:{paginate: {per_page: 10}}
 end
