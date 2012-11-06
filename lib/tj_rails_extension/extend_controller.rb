@@ -2,6 +2,59 @@ module TjRailsExtension
   module Controller
     extend ActiveSupport::Concern
 
+    included do
+      class_eval do
+        def self.default_resource_actions options = {}
+          before_filter :find!, only: [:show, :edit, :update, :destroy]
+          before_filter :set_header, only: [:index, :show, :new, :edit]
+          @@options = options
+          @@record_class = controller_name.classify.constantize
+          @@singular_string = controller_name.singularize
+          @@plural_string = controller_name
+          
+          class_eval do
+            def index
+              @@options[:index] ||= {}
+              @@options[:index][:paginate] = (@@options[:index][:paginate] || {}).merge({page: params[:page]})
+              instance_variable_set('@' + @@plural_string, @@record_class.paginate(@@options[:index][:paginate]))
+            end
+
+            def show
+            end
+
+            def new
+              instance_variable_set('@' + @@singular_string, @@record_class.new)
+            end
+
+            def create
+              record = instance_variable_set('@' + @@singular_string, @@record_class.new(params[@@singular_string]))
+              save_record!(record, @@options[:create])
+            end
+
+            def edit
+            end
+
+            def update
+              record = instance_variable_get('@' + @@singular_string)
+              record.assign_attributes params[@@singular_string]
+              save_record!(record, @@options[:update])
+            end
+
+            def destroy
+              @@options[:destroy] ||= {}
+              @@options[:destroy][:notice] ||= t("tj.destroy_successful")
+              @@options[:destroy][:redirect] ||= send("#{controller_name}_path")
+
+              record = instance_variable_get('@' + @@singular_string)
+              record.destroy
+              flash[:notice] = @@options[:destroy][:notice]
+              redirect_to @@options[:destroy][:redirect]
+            end
+          end
+        end
+      end
+    end
+
     protected
 
     def set_header
@@ -20,12 +73,13 @@ module TjRailsExtension
     end
 
     def save_record! record, options = {}
-      options[:notice] ||= t("succeeded")
-      options[:alert] ||= t("failed")
-      options[:success_url] ||= url_for(record)
+      options ||= {}
+      options[:notice] ||= t("tj.save_successful")
+      options[:alert] ||= t("tj.save_failed")
+      options[:redirect] ||= url_for(record)
       if record.save
         flash[:notice] = options[:notice]
-        redirect_to options[:success_url]
+        redirect_to options[:redirect]
       else
         flash[:alert] = options[:alert]
         render case action_name
@@ -37,56 +91,14 @@ module TjRailsExtension
 
     # filters
     def find! options = {}
-      options[:alert] ||= t("not_found")
-      options[:fail_url] ||= send("#{controller_name}_path")
+      options ||= {}
+      options[:alert] ||= t("tj.not_found")
+      options[:redirect] ||= send("#{controller_name}_path")
       options[:id_symbol] ||= :id
       record_class = controller_name.classify.constantize
       unless instance_variable_set("@#{controller_name.singularize}", record_class.find_by_id(params[options[:id_symbol]]))
         flash[:alert] = options[:alert]
-        redirect_to options[:fail_url]
-      end
-    end
-
-    def resource! options = {}
-      options[:save_options] ||= {}
-      options[:find_options] ||= {}
-      options[:index] ||= {}
-
-      record_class = controller_name.classify.constantize
-      singular_string = controller_name.singularize
-      plural_string = controller_name
-      options[:index][:records] ||= record_class.paginate(:page => params[:page])
-      case action_name
-      when "index"
-        instance_variable_set('@' + plural_string, options[:index][:records])
-        set_header
-      when "show"
-        find!(options[:find_options])
-        set_header unless response_body
-      when "new"
-        instance_variable_set('@' + singular_string, record_class.new)
-        set_header
-      when "create"
-        record = instance_variable_set('@' + singular_string, record_class.new(params[singular_string]))
-        save_record!(record, options[:save_options])
-      when "edit"
-        find!(options[:find_options])
-        set_header unless response_body
-      when "update"
-        find!(options[:find_options])
-        unless response_body
-          record = instance_variable_get('@' + singular_string)
-          record.assign_attributes params[singular_string]
-          save_record!(record, options[:save_options])
-        end
-      when "destroy"
-        find!(options[:find_options])
-        unless response_body
-          record = instance_variable_get('@' + singular_string)
-          record.destroy
-          flash[:notice] = t("succeeded")
-          redirect_to send("#{controller_name}_path")
-        end 
+        redirect_to options[:redirect]
       end
     end
   end

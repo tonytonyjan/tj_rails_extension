@@ -7,7 +7,16 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
+gem "devise"
+gem "cancan"
 gem "faker"
+gem "carrierwave"
+gem "simple_form"
+gem "dynamic_form"
+gem "nested_form", github: 'ryanb/nested_form'
+gem "will_paginate"
+gem "rdiscount"
+gem "rails-i18n"
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

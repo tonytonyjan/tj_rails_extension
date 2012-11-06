@@ -1,0 +1,16 @@
+zh-TW:
+  tj:
+    succeeded: 成功
+    save_successful: 儲存成功
+    save_failed: 儲存失敗
+    destroy_successful: 刪除成功
+    not_found: 找不到
+    form:
+      back: 返回
+      show: 查看
+      edit: 編輯
+      destroy: 刪除
+  will_paginate:
+    next_label: "下一頁 &#8594;"
+    previous_label: "&#8592; 上一頁"
+    page_gap: "&hellip;"

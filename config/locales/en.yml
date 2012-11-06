@@ -1,4 +1,12 @@
 en:
-  succeeded: Succeeded
-  failed: Failed
-  not_found: Not Found
+  tj:
+    succeeded: Succeeded
+    save_successful: Save Successful
+    save_failed: Save Failed
+    destroy_successful: Destroy Successful
+    not_found: Not Found
+    form:
+      back: Back
+      show: Show
+      edit: Edit
+      destroy: Destroy

@@ -1,16 +1,14 @@
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: f6cc0fe985e722ced5fda952e834f1273f6510dd
+  specs:
+    nested_form (0.3.1)
+
 PATH
   remote: .
   specs:
     tj_rails_extension (0.0.1)
-      cancan
-      carrierwave
-      devise
-      dynamic_form
       rails (~> 3.2.8)
-      rails-i18n
-      rdiscount
-      simple_form
-      will_paginate
 
 GEM
   remote: http://rubygems.org/
@@ -101,7 +99,6 @@ GEM
     rdiscount (1.6.8)
     rdoc (3.12)
       json (~> 1.4)
-    rubyzip (0.9.9)
     simple_form (2.0.4)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -115,7 +112,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.34)
+    tzinfo (0.3.35)
     warden (1.2.1)
       rack (>= 1.0)
     will_paginate (3.0.3)
@@ -124,8 +121,16 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  cancan
+  carrierwave
+  devise
+  dynamic_form
   faker
   jquery-rails
-  rubyzip
+  nested_form!
+  rails-i18n
+  rdiscount
+  simple_form
   sqlite3
   tj_rails_extension!
+  will_paginate

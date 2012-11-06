@@ -7,3 +7,22 @@ Append to `Gemfile`:
 And then:
 
     rake tj:install
+
+application.js
+
+    ...
+    //= require jquery
+    //= require jquery_ujs
+    //= require bootstrap
+    //= require jquery_nested_form
+    //= require_tree .
+    ...
+
+application.css
+
+    ...
+    *= require bootstrap
+    *= require_self
+    *= require bootstrap-responsive
+    *= require_tree .
+    ...
