@@ -1,3 +1,4 @@
+<%%= link_to t("helpers.submit.create", :model => <%= human_name %>), new_<%= singular_table_name %>_path, class: "btn btn-success btn-large" %>
 <%%= will_paginate @<%= plural_table_name %> %>
 <table>
   <thead>
@@ -24,5 +25,3 @@
 </table>
 <%%= will_paginate @<%= plural_table_name %> %>
 <br />
-
-<%%= link_to t("helpers.submit.create", :model => <%= human_name %>), new_<%= singular_table_name %>_path %>

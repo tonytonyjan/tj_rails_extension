@@ -7,6 +7,14 @@ require "tj_rails_extension"
 
 module Dummy
   class Application < Rails::Application
+            config.generators do |g|
+              g.stylesheets false
+            end
+
+          config.generators do |g|
+            g.stylesheets false
+          end
+
     config.generators do |g|
       g.stylesheets false
     end
