@@ -76,8 +76,8 @@ module TjRailsExtension
       options ||= {}
       options[:notice] ||= t("tj.save_successful")
       options[:alert] ||= t("tj.save_failed")
-      options[:redirect] ||= url_for(record)
       if record.save
+        options[:redirect] ||= url_for(record)
         flash[:notice] = options[:notice]
         redirect_to options[:redirect]
       else
