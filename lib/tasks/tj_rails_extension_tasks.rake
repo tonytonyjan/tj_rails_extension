@@ -46,6 +46,7 @@ namespace :tj do
         ## Dev
         gem_group :test, :development do
           gem "rspec-rails"
+          generate("rspec:install")
           gem "faker"
           gem "rubyzip"
         end
