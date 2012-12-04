@@ -2,7 +2,7 @@
 
 Append to `Gemfile`:
 
-    gem "tj_rails_extension", :git => "git://github.com/tonytonyjan/tj_rails_extension.git"
+    gem "tj_rails_extension", github: 'tonytonyjan/tj_rails_extension'
 
 And then:
 
