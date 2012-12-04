@@ -15,6 +15,7 @@ application.js
     //= require jquery_ujs
     //= require bootstrap
     //= require jquery_nested_form
+    //= require garber-irish
     //= require_tree .
     $(document).ready(UTIL.init);
     ...
