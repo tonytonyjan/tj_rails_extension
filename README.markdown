@@ -6,6 +6,8 @@ Append to `Gemfile`:
 
 And then:
 
+    rake tj:install:gems
+    bundle install
     rake tj:install
 
 application.js

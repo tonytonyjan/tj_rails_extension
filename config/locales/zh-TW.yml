@@ -1,10 +1,7 @@
 zh-TW:
   tj:
     succeeded: 成功
-    save_successful: 儲存成功
-    save_failed: 儲存失敗
-    destroy_successful: 刪除成功
-    not_found: 找不到
+    failed: 失敗
     form:
       back: 返回
       show: 查看

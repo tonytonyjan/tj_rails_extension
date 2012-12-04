@@ -1,0 +1,25 @@
+<%= link_to t("helpers.submit.create", :model => Story), new_story_path, class: "btn btn-success btn-large" %>
+<%= will_paginate @stories %>
+<table>
+  <thead>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @stories) do |story| %>
+        <td><%= story.title %></td>
+        <td><%= story.content %></td>
+        <td><%= link_to t('tj.form.show'), story %></td>
+      <td><%= link_to t('tj.form.edit'), edit_story_path(story) %></td>
+      <td><%= link_to t('tj.form.destroy'), story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @stories %>
+<br />

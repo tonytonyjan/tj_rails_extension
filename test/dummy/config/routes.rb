@@ -1,4 +1,7 @@
 Dummy::Application.routes.draw do
+  resources :stories
+
+
   get "home/about"
 
   get "home/contact"

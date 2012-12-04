@@ -31,6 +31,7 @@ namespace :tj do
         generate("devise:views")
         generate("devise", config[:user_model_name]) if config[:user_model_name]
         gem "cancan"
+        generate("cancan:ability")
         ## Storage
         gem "carrierwave"
         ## View
