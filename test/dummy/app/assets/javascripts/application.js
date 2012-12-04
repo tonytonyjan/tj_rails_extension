@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery_nested_form
-//= require garber-irish
+//= require tj_rails_extension
 //= require_tree .
 $(document).ready(UTIL.init);
