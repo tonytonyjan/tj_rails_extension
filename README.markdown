@@ -16,6 +16,7 @@ application.js
     //= require bootstrap
     //= require jquery_nested_form
     //= require_tree .
+    $(document).ready(UTIL.init);
     ...
 
 application.css
