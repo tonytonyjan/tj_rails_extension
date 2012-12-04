@@ -8,7 +8,7 @@ APP = {
  
 UTIL = {
   exec: function( controller, action ) {
-    var ns = SITE,
+    var ns = APP,
         action = ( action === undefined ) ? "init" : action;
  
     if ( controller !== "" && ns[controller] && typeof ns[controller][action] == "function" ) {

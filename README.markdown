@@ -28,3 +28,9 @@ application.css
     *= require bootstrap-responsive
     *= require_tree .
     ...
+
+application.html.erb
+
+    ...
+    <body class="<%= controller_name %> <%= action_name %>" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+    ...
