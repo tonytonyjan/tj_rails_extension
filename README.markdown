@@ -16,8 +16,7 @@ application.js
     //= require jquery
     //= require jquery_ujs
     //= require bootstrap
-    //= require jquery_nested_form
-    //= require garber-irish
+    //= tj_rails_extension
     //= require_tree .
     $(document).ready(UTIL.init);
     ...
@@ -35,4 +34,8 @@ application.html.erb
 
     ...
     <body class="<%= controller_name %> <%= action_name %>" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+      <%= notice_message %>
+      <%= page_header @header if @header %>
+      <%= yield %>
+    </body>
     ...
