@@ -28,6 +28,7 @@ namespace :tj do
         ## User
         gem "devise"
         generate("devise:install")
+        generate("devise:views")
         generate("devise", config[:user_model_name]) if config[:user_model_name]
         gem "cancan"
         ## Storage
@@ -66,15 +67,13 @@ namespace :tj do
     desc "Generate default scaffold"
     task :scaffold do
       generator.instance_eval do
-        if yes?("Generate home controller?")
-          source = File.expand_path('../../templates', __FILE__)
-          directory source, 'lib/templates'
-          application <<-eos
-        config.generators do |g|
-              g.stylesheets false
-            end
-          eos
-        end
+        source = File.expand_path('../../templates', __FILE__)
+        directory source, 'lib/templates'
+        application <<-eos
+      config.generators do |g|
+            g.stylesheets false
+          end
+        eos
       end
     end
 
