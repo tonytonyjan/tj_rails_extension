@@ -39,3 +39,11 @@ application.html.erb
       <%= yield %>
     </body>
     ...
+
+application_controller.rb
+
+    class ApplicationController < ActionController::Base
+      ...
+      default_rescue
+      ...  
+    end

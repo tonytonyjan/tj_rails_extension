@@ -6,6 +6,5 @@ require_dependency "<%= namespaced_file_path %>/application_controller"
 class <%= controller_class_name %>Controller < ApplicationController
   load_and_authorize_resource
   default_resource_actions
-  default_rescue
 end
 <% end -%>
