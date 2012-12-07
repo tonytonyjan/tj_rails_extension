@@ -17,6 +17,7 @@ gem "nested_form", github: 'ryanb/nested_form'
 gem "will_paginate"
 gem "rdiscount"
 gem "rails-i18n"
+gem 'uglifier'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
