@@ -47,3 +47,17 @@ application_controller.rb
       default_rescue
       ...  
     end
+
+posts.js.coffee
+
+    APP.posts =
+      show: () ->
+        this.highlight()
+      new: () ->
+        this.form()
+      create: () ->
+        this.form()
+      edit: () ->
+        this.form()
+      update: () ->
+        this.form()
